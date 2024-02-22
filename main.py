@@ -21,40 +21,39 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    for x, y in map:
-        pygame.draw.rect(screen, GRAY, (x, y, x_size2, y_size2)) #--------------------------------------------------------------------------------------------------------------
-
     controls = pygame.key.get_pressed()
-    if controls[pygame.K_a]:
-                screen.blit(surf2, (x_pos2, y_pos2))
-                x_pos2 += -5
-    if controls[pygame.K_s]:
-                screen.blit(surf2, (x_pos2, y_pos2))
-                y_pos2 += 5       
-    if controls[pygame.K_w]:
-                screen.blit(surf2, (x_pos2, y_pos2))
-                y_pos2 += -5
-    if controls[pygame.K_d]:
-                screen.blit(surf2, (x_pos2, y_pos2))
-                x_pos2 += 5
+    # if controls[pygame.K_a]:
+    #             screen.blit(surf2, (x_pos2, y_pos2))
+    #             x_pos2 += -5
+    # if controls[pygame.K_s]:
+    #             screen.blit(surf2, (x_pos2, y_pos2))
+    #             y_pos2 += 5       
+    # if controls[pygame.K_w]:
+    #             screen.blit(surf2, (x_pos2, y_pos2))
+    #             y_pos2 += -5
+    # if controls[pygame.K_d]:
+    #             screen.blit(surf2, (x_pos2, y_pos2))
+    #             x_pos2 += 5
 
     if controls[pygame.K_KP_4]:
-        player.move(x = -1)
+        player.move_left()
     if controls[pygame.K_KP_6]:
-        player.move(x = 1)
+        player.move_right()
     if controls[pygame.K_KP_8]:
-        player.move(y = -1)
+        player.move_forw()
     if controls[pygame.K_KP_5]:
-        player.move(y = 1)
+        player.move_back()
     if controls[pygame.K_KP_7]:
-        player.rotate(-0.01)
+        player.rotate(2 if controls[pygame.K_KP_5] else -2)
     if controls[pygame.K_KP_9]:
-        player.rotate(0.01)
+        player.rotate(-2 if controls[pygame.K_KP_5] else 2)
         
     screen.fill(BLACK)
+    for x, y in map:
+        pygame.draw.rect(screen, GRAY, (x, y, x_size2, y_size2), 2)
     screen.blit(surf, (x_pos2, y_pos2))
     player.draw()  
-    player.line()         
+    player.fov()         
     pygame.display.flip() 
     clock.tick(FPS)
     

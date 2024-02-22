@@ -1,10 +1,12 @@
 import pygame
+import math
 #screen settings
-FPS = 60
+FPS = 30
 WIDTH = 1200
 HEIGHT = 800
 HALF_WIDTH = 600
 HALF_HEIGHT = 400
+DIOGONAL = math.sqrt(WIDTH**2 + HEIGHT**2)
 sc = pygame.display.set_mode((WIDTH, HEIGHT))
 
 #color palette
@@ -27,12 +29,15 @@ LIGHT_PURPLE = (128, 0, 255)
 #player setting
 P_SPEED = 5
 angle = 0
-x_pos = 10
-y_pos = 10
+x_pos = HALF_WIDTH
+y_pos = HALF_HEIGHT
 x_size = 50
 y_size = 50
 r_size = 25
 rline = 0
+fov_lines = 90
+fov_angle = 45
+fov_abl = 1
 
 #square100
 x_pos2 = 100 
