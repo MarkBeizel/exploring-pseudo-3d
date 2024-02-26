@@ -11,8 +11,8 @@ screen = sc
 running = True
 player = Player()
 
-surf = pygame.Surface((100, 100))
-surf.fill(LIGHT_GREEN)
+surf = pygame.Surface((WIDTH, HALF_HEIGHT))
+surf.fill(BLUE)
 surf2 = pygame.Surface((100, 100))
 surf2.fill(BLACK)
 
@@ -49,11 +49,11 @@ while running:
         player.rotate(-2 if controls[pygame.K_KP_5] else 2)
         
     screen.fill(BLACK)
-    for x, y in map:
-        pygame.draw.rect(screen, GRAY, (x, y, x_size2, y_size2), 2)
-    screen.blit(surf, (x_pos2, y_pos2))
-    player.draw()  
-    player.fov()         
+    screen.blit(surf, (0, 0)) 
+    player.fov()
+    # for x, y in map:
+    #     pygame.draw.rect(screen, GRAY, (x, y, x_size2, y_size2), 2)
+    # player.draw()         
     pygame.display.flip() 
     clock.tick(FPS)
     

@@ -1,7 +1,7 @@
 import pygame
 import math
 #screen settings
-FPS = 30
+FPS = 15
 WIDTH = 1200
 HEIGHT = 800
 HALF_WIDTH = 600
@@ -26,6 +26,12 @@ PURPLE = (255, 0, 255)
 PINK = (255, 0, 128)
 LIGHT_PURPLE = (128, 0, 255)
 
+#square100
+x_pos2 = 100 
+y_pos2 = 100
+x_size2 = 100
+y_size2 = 100
+
 #player setting
 P_SPEED = 5
 angle = 0
@@ -34,13 +40,12 @@ y_pos = HALF_HEIGHT
 x_size = 50
 y_size = 50
 r_size = 25
+
+#player camera (ray casting)
 rline = 0
 fov_lines = 90
 fov_angle = 45
-fov_abl = 1
-
-#square100
-x_pos2 = 100 
-y_pos2 = 100
-x_size2 = 100
-y_size2 = 100
+fov_abc = 1
+dist = fov_lines / 2 * math.tan(fov_angle)
+PROJ_COEF = dist * x_size2 * 6
+SCALE = WIDTH / fov_lines
