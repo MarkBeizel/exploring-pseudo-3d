@@ -3,7 +3,7 @@ import math
 from pygame.locals import *
 from settings import *
 from player import *
-from map import map
+from map import *
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -44,16 +44,19 @@ while running:
     if controls[pygame.K_KP_5]:
         player.move_back()
     if controls[pygame.K_KP_7]:
-        player.rotate(2 if controls[pygame.K_KP_5] else -2)
+        player.rotate(k if controls[pygame.K_KP_5] else -k)
     if controls[pygame.K_KP_9]:
-        player.rotate(-2 if controls[pygame.K_KP_5] else 2)
+        player.rotate(-k if controls[pygame.K_KP_5] else k)
         
-    screen.fill(BLACK)
-    screen.blit(surf, (0, 0)) 
+    sc.fill(BLACK)
+    sc.blit(surf, (0, 0)) 
     player.fov()
-    # for x, y in map:
-    #     pygame.draw.rect(screen, GRAY, (x, y, x_size2, y_size2), 2)
-    # player.draw()         
+    # player.obj_1()
+    for x, y in map:
+        pygame.draw.rect(screen, GRAY, (x, y, x_size2, y_size2), 2)
+    for x, y in G:
+        pygame.draw.rect(screen, GRAY, (x, y, x_size3, x_size3), 2)
+    player.draw()         
     pygame.display.flip() 
     clock.tick(FPS)
     
